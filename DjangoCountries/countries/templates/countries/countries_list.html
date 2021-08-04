@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Countries List
+{% endblock %}
+
+{% block content %}
+    <h1>Countries List</h1>
+    <a href="{% url 'languages_list' %}">Список языков</a>
+
+    {% block filter %}
+        {% for letter in alphabet %}
+            <a href="{% url 'countries_by_letter' letter %}">{{ letter }}</a>
+        {% endfor %}
+    {% endblock %}
+
+    <ol>
+        {% for country in countries_list %}
+            <li>
+                <a href="{% url 'country_detail' forloop.counter0 %}">{{ country.country }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+    <a href="{% url 'index' %}">Вернуться на главную</a>
+{% endblock %}
