@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Languages List
+{% endblock %}
+
+{% block content %}
+    <h1>Languages List</h1>
+
+    {% block filter %}
+        <a href="{% url 'languages_list' %}">Вернуться к списку языков</a>
+    {% endblock %}
+
+    <ol>
+        {% for language in languages_list %}
+            <li>
+                <a href="{% url 'language_detail' language %}">{{ language }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+    <a href="{% url 'countries_list' %}">Вернуться к списку стран</a>
+{% endblock %}
